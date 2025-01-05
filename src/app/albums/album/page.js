@@ -44,7 +44,7 @@ function Page() {
     });
   };
 
-  const handleEscapeKey=(e)=>{
+  const handleEscapeKey=()=>{
     // document.exitFullscreen();
     if (!document.fullscreenElement){
 

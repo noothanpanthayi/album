@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
-  const [state, setState] = useState({
+  const [state] = useState({
     albums: [
       {
         id: "1001",
