@@ -1,0 +1,85 @@
+
+
+.imgContainer {
+  position: relative;
+}
+
+.buttonPanel {
+  width: 100%;
+  bottom:0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.back {
+    border-right:solid 1px #fff;
+    cursor: pointer;
+}
+
+.next {
+  text-align: right;
+  cursor: pointer;
+}
+
+.homeIcon {
+  font-size: 14px;
+}
+
+.img {
+    position:static!important;
+}
+
+.imageTitle{
+  display: flex;
+  justify-content: space-between;
+  background-color:rebeccapurple;
+  color:#fff;
+  padding:12px;
+  font-size: 18px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.buttonPanel div {
+  color: #fff;
+  background-color: #7393B3;
+  width: 100%;
+  padding: 15px;
+}
+
+.backLayer {
+  user-select: none;
+  cursor: pointer;
+  opacity: 0.4;
+  color:#000;
+  display:flex;
+  align-items: center;
+  height:100%;
+  width:50%;
+  position:absolute;
+  left: 0
+}
+
+.nextLayer {
+  user-select: none;
+  cursor: pointer;
+  opacity: 0.4;
+  justify-content: right;
+  display:flex;
+  align-items: center;
+  height:100%;
+  width:50%;
+  position:absolute;
+  right: 0
+}
+
+.navBtn{
+  border:solid 1px silver;
+  border-radius:6px;
+  color:#fff;
+  font-size:14px;
+  background-color: rebeccapurple;
+  padding:6px;
+  width:113px;
+  cursor: pointer;
+}

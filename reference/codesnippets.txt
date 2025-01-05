@@ -1,0 +1,95 @@
+// console.log("total images raw ", data.images.length);
+    // const preloadedImages = await preloadImages(data.images);
+    // console.log("total preload images ", preloadImages);
+    // const newPreloadedImages = [];
+
+    // for (let i = 0; i < data.images.length; i++) {
+    //   const img = new Image();
+    //   img.src = data.images[i];
+    //   newPreloadedImages.push(img);
+    // }
+
+    // console.log("new preloaded images ", newPreloadedImages.length)
+
+    // const rightClick = (e) => {
+  //   e.preventDefault();
+  //   navigate("back");
+  // };
+
+  // const Next = () => {
+  //   return (
+  //     <>
+  //       <svg
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         height="60px"
+  //         viewBox="0 -960 960 960"
+  //         width="80px"
+  //         // fill="#5f6368"
+  //         fill="#fff"
+  //       >
+  //         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+  //       </svg>
+  //     </>
+  //   );
+  // };
+
+  // const Back = () => {
+  //   return (
+  //     <>
+  //       <svg
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         height="60px"
+  //         viewBox="0 -960 960 960"
+  //         width="80px"
+  //         fill="#fff"
+  //       >
+  //         <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+  //       </svg>
+  //     </>
+  //   );
+  // };
+
+   <NextImage
+                // onContextMenu={rightClick}
+                // onClick={() => navigate("next")}
+                // onDoubleClick={() => navigate("back")}
+                className={img}
+                // src={`https://amzn-s3-nkalbum-bucket.s3.us-east-2.amazonaws.com/nyalbum/${
+                //   state.images[state.currentIndex].imageName
+                // }.jpg`}
+                src={state.s3images[state.currentIndex]}
+                fill={true}
+                // priority={true}
+                //  sizes="(min-width: 808px) 50vw, 100vw"
+                // style={{objectFit:'contain'}}
+                
+  
+           
+                alt="NY Pics"
+              />
+
+
+              /*
+
+//  sizes="100vw, 90vw"
+          // width="0"
+          // height="0"
+          // layout="responsive"
+          // objectFit="fill"
+          // objectFit='cover'
+
+
+*/
+
+ // const preloadImages = async (urls) => { //preload images working
+
+  //   const imagePromises = urls.map((url) => {
+  //     return new Promise((resolve, reject) => {
+  //       const img = new Image();
+  //       img.onload = () => resolve(img);
+  //       img.onerror = (error) => reject(error);
+  //       img.src = url;
+  //     });
+  //   });
+  //   return Promise.all(imagePromises);
+  // };
