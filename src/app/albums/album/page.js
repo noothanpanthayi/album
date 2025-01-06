@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import NextImage from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
+import {getHost} from '../../api/getHost';
+
 
 function Page() {
   const [state, setState] = useState({
@@ -16,8 +18,8 @@ function Page() {
   });
 
   const fetchImages = async () => {
-    // const response = await fetch("http://localhost:3000/api/list-images?folderName=nyalbum");
-    const response = await fetch("http://3.80.91.134/api/list-images?folderName=nyalbum");
+    
+    const response = await fetch(`${getHost()}/api/list-images?folderName=nyalbum`);
     
     const data = await response.json();
     
@@ -146,7 +148,6 @@ function Page() {
         :
         <div style={{position:'relative', display:'flex',justifyContent:'flex-end'}}>
            <button onClick={toggleFullScreen} className={exitFullScreen}>
-           {/* <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg> */}
             Exit Full Screen
             </button>
         </div>
@@ -171,7 +172,7 @@ function Page() {
             </div>
           )}
 
-          {state.showNav && (
+          {state.showNav && state.imageLoaded && (
             <div
               title="Click for Next"
               onClick={() => navigate("next")}
