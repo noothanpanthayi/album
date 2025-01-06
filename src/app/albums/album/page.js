@@ -11,12 +11,13 @@ function Page() {
     currentImg: "ny11",
     currentIndex: 0,
     s3images: [],
+    imageLoaded:false
    
   });
 
   const fetchImages = async () => {
-    // const response = await fetch("http://localhost:3000/api/list-images?folderName=nyalbum");
-    const response = await fetch("http://3.80.91.134/api/list-images?folderName=nyalbum");
+    const response = await fetch("http://localhost:3000/api/list-images?folderName=nyalbum");
+    // const response = await fetch("http://3.80.91.134/api/list-images?folderName=nyalbum");
     
     const data = await response.json();
     
@@ -109,21 +110,30 @@ function Page() {
     router.push("/albums");
   };
 
+  const handleImageLoad=()=>{
+    setState((prevState) => {
+      return {
+        ...prevState,
+        imageLoaded: true,
+      };
+    });
+  }
   
   return (
     <>
       <div>
-        <div className={imageTitle}>
+        {
+          !state.isFullScreen ? <div className={imageTitle}>
           <button
             onClick={home}
             title="Click here to go back"
             className={navBtn}
           >
-          Albums
+          Home
           </button>
-          {/* <div  onClick={home} style={{textTransform:'capitalize'}}>
+          <div  onClick={home} style={{textTransform:'capitalize'}}>
             {state.s3images[state.currentIndex]?.split("/")[4].split("?")[0].split("_").join(" ").split(".")[0]}
-          </div> */}
+          </div>
           <div>
             {
               <button onClick={toggleFullScreen} className={navBtn}>
@@ -133,9 +143,17 @@ function Page() {
 }
           </div>
         </div>
+        :
+        <div style={{position:'relative', display:'flex',justifyContent:'flex-end'}}>
+           <button onClick={toggleFullScreen} className={exitFullScreen}>
+           {/* <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg> */}
+            Exit Full Screen
+            </button>
+        </div>
+}
 
         <div className={imgContainer}>
-          {state.showNav && (
+          {state.showNav &&  state.imageLoaded && (
             <div
               title="Click for Back"
               onClick={() => navigate("back")}
@@ -176,6 +194,7 @@ function Page() {
               className={img}
               src={state.s3images[state.currentIndex]}
               fill={true}
+              onLoad={handleImageLoad}
               alt="NY Pics"
             />
           )}
@@ -192,6 +211,7 @@ const {
   imgContainer,
   imageTitle,
   navBtn,
+  exitFullScreen
 } = styles;
 export default Page;
 
