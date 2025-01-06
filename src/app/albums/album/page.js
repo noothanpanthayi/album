@@ -119,9 +119,9 @@ function Page() {
           >
           Albums
           </button>
-          <div  onClick={home} style={{textTransform:'capitalize'}}>
+          {/* <div  onClick={home} style={{textTransform:'capitalize'}}>
             {state.s3images[state.currentIndex]?.split("/")[4].split("?")[0].split("_").join(" ").split(".")[0]}
-          </div>
+          </div> */}
           <div>
             {
               <button onClick={toggleFullScreen} className={navBtn}>
