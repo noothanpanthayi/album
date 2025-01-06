@@ -15,7 +15,7 @@ function Page() {
   });
 
   const fetchImages = async () => {
-    const response = await fetch("../../api/list-images?folderName=nyalbum");
+    const response = await fetch("http://3.80.91.134/api/list-images?folderName=nyalbum");
     const data = await response.json();
     
 
