@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import NextImage from "next/image";
+// import NextImage from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import {getHost} from '../../api/getHost';
@@ -128,14 +128,14 @@ function Page() {
     router.push("/albums");
   };
 
-  const handleImageLoad=()=>{
-    setState((prevState) => {
-      return {
-        ...prevState,
-        imageLoaded: true,
-      };
-    });
-  }
+  // const handleImageLoad=()=>{
+  //   setState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       imageLoaded: true,
+  //     };
+  //   });
+  // }
   
   return (
     <>
@@ -229,7 +229,6 @@ function Page() {
 const {
   backLayer,
   nextLayer,
-  img,
   imgContainer,
   imageTitle,
   navBtn,
