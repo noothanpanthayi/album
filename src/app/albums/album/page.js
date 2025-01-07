@@ -25,11 +25,20 @@ function Page() {
 
     const response = await fetch('http://3.80.91.134/api/list-images?folderName=nyalbum');
     // const response = await fetch('http://localhost:3000/api/list-images?folderName=nyalbum');
-
-
-    
     const data = await response.json();
-    
+
+    data.images.forEach(url=>{
+      const link=document.createElement('link');
+      link.rel='preload';
+      link.as='image';
+      link.href=url;
+      document.head.appendChild(link);
+    })
+
+    // data.images.forEach(url=>{
+    //   const img = new Image();
+    //   img.src=url
+    // })
 
     setState((prevState) => {
       return {
@@ -160,7 +169,10 @@ function Page() {
 }
 
         <div className={imgContainer}>
-          {state.showNav &&  state.imageLoaded && (
+          {state.showNav 
+          &&  
+          // state.imageLoaded && 
+          (
             <div
               title="Click for Back"
               onClick={() => navigate("back")}
@@ -178,7 +190,9 @@ function Page() {
             </div>
           )}
 
-          {state.showNav && state.imageLoaded && (
+          {state.showNav &&
+          // && state.imageLoaded && 
+          (
             <div
               title="Click for Next"
               onClick={() => navigate("next")}
@@ -197,13 +211,14 @@ function Page() {
           )}
 
           {state.s3images?.length > 0 && (
-            <NextImage
-              className={img}
-              src={state.s3images[state.currentIndex]}
-              fill={true}
-              onLoad={handleImageLoad}
-              alt="NY Pics"
-            />
+            <img src={state.s3images[state.currentIndex]} style={{width:'100vw'}}/>
+            // <NextImage
+            //   className={img}
+            //   src={state.s3images[state.currentIndex]}
+            //   fill={true}
+            //   onLoad={handleImageLoad}
+            //   alt="NY Pics"
+            // />
           )}
         </div>
       </div>
