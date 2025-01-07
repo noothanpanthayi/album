@@ -89,15 +89,14 @@
 
 .exitFullScreen {
   cursor: pointer;
-  font-size:14px;
-  margin:5px;
-  border:solid 2px #fff;
+  font-size: 10px;
+  margin: 5px;
+  border: solid 2px #fff;
   z-index: 2;
-  right:0;
-  top:50;
-  padding:6px;
-  position:absolute;
-  border-radius: 6px;
-  color:#fff;
+  right: 0;
+  padding: 11px;
+  position: absolute;
+  border-radius: 50%;
+  color: #fff;
   background-color: rebeccapurple;
 }
