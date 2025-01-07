@@ -24,6 +24,8 @@ function Page() {
     // const response = await fetch(`${getHost()}/api/list-images?folderName=nyalbum`);
 
     const response = await fetch('http://3.80.91.134/api/list-images?folderName=nyalbum');
+    // const response = await fetch('http://localhost:3000/api/list-images?folderName=nyalbum');
+
 
     
     const data = await response.json();
@@ -152,8 +154,7 @@ function Page() {
         </div>
         :
         <div style={{position:'relative', display:'flex',justifyContent:'flex-end'}}>
-           <button onClick={toggleFullScreen} className={exitFullScreen}>
-            Exit Full Screen
+           <button onClick={toggleFullScreen} className={exitFullScreen}><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
             </button>
         </div>
 }
