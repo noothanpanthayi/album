@@ -2,6 +2,7 @@
 
 .imgContainer {
   position: relative;
+  margin-top: 37px;
 }
 
 .buttonPanel {
@@ -41,6 +42,7 @@
   width:-webkit-fill-available;
   align-items: center;
   cursor: pointer;
+  top:0
 }
 
 .buttonPanel div {
