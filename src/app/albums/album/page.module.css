@@ -30,12 +30,15 @@
 }
 
 .imageTitle{
+  z-index: 2;
   display: flex;
+  position:fixed;
   justify-content: space-between;
-  background-color:rebeccapurple;
+  background-color:darkblue;
   color:#fff;
-  padding:12px;
-  font-size: 18px;
+  padding:5px;
+  font-size: 14px;
+  width:-webkit-fill-available;
   align-items: center;
   cursor: pointer;
 }
@@ -96,9 +99,8 @@
   border: solid 2px #fff;
   z-index: 2;
   right: 0;
-  padding: 11px;
+  padding: 4px;
   position: absolute;
   border-radius: 50%;
-  color: #fff;
-  background-color: rebeccapurple;
+  background-color: darkblue;
 }

@@ -22,7 +22,7 @@ const PhotosPage = () => {
       <div>Photos</div>
       <div>
         {
-         images?.length>0 &&    <Image
+         images?.length>0 &&    <img
                     aria-hidden
                     src={images[1]}
                     alt="File icon"

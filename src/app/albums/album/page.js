@@ -19,12 +19,12 @@ function Page() {
 
   const fetchImages = async () => {
 
-    console.log("HOST URL ", `${getHost()}/api/list-images?folderName=nyalbum`);
+    console.log("HOST URL ", `${getHost()}/api/list-images?folderName=travel`);
     
     // const response = await fetch(`${getHost()}/api/list-images?folderName=nyalbum`);
 
-    const response = await fetch('http://3.80.91.134/api/list-images?folderName=nyalbum');
-    // const response = await fetch('http://localhost:3000/api/list-images?folderName=nyalbum');
+    // const response = await fetch('http://3.80.91.134/api/list-images?folderName=nyalbum');
+    const response = await fetch('http://localhost:3000/api/list-images?folderName=travel');
     const data = await response.json();
 
     data.images.forEach(url=>{
@@ -128,50 +128,49 @@ function Page() {
     router.push("/albums");
   };
 
-  // const handleImageLoad=()=>{
-  //   setState((prevState) => {
-  //     return {
-  //       ...prevState,
-  //       imageLoaded: true,
-  //     };
-  //   });
-  // }
+  const handleImageLoad=()=>{
+    setState((prevState) => {
+      return {
+        ...prevState,
+        imageLoaded: true,
+      };
+    });
+  }
   
   return (
     <>
       <div>
         {
           !state.isFullScreen ? <div className={imageTitle}>
-          <button
+          <div
             onClick={home}
             title="Click here to go back"
-            className={navBtn}
           >
-          Home
-          </button>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+          </div>
           <div  onClick={home} style={{textTransform:'capitalize'}}>
             {state.s3images[state.currentIndex]?.split("/")[4].split("?")[0].split("_").join(" ").split(".")[0]}
           </div>
           <div>
             {
-              <button onClick={toggleFullScreen} className={navBtn}>
-              {!state.isFullScreen?"Full Screen":"Exit Full Screen"}
-            </button>
+              <div title="Full Screen" onClick={toggleFullScreen}>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M120-120v-200h80v120h120v80H120Zm520 0v-80h120v-120h80v200H640ZM120-640v-200h200v80H200v120h-80Zm640 0v-120H640v-80h200v200h-80Z"/></svg>
+            </div>
            
 }
           </div>
         </div>
         :
         <div style={{position:'relative', display:'flex',justifyContent:'flex-end'}}>
-           <button onClick={toggleFullScreen} className={exitFullScreen}><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-            </button>
+           <div title="Exit Full Screen" onClick={toggleFullScreen} className={exitFullScreen}>
+           <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#fff"><path d="m136-80-56-56 264-264H160v-80h320v320h-80v-184L136-80Zm344-400v-320h80v184l264-264 56 56-264 264h184v80H480Z"/></svg>
+            </div>
         </div>
 }
 
         <div className={imgContainer}>
-          {state.showNav 
-          &&  
-          // state.imageLoaded && 
+          {state.showNav &&  
+          state.imageLoaded && 
           (
             <div
               title="Click for Back"
@@ -191,7 +190,7 @@ function Page() {
           )}
 
           {state.showNav &&
-          // && state.imageLoaded && 
+           state.imageLoaded && 
           (
             <div
               title="Click for Next"
@@ -211,7 +210,16 @@ function Page() {
           )}
 
           {state.s3images?.length > 0 && (
-            <img src={state.s3images[state.currentIndex]} style={{width:'100vw'}}/>
+            <img src={state.s3images[state.currentIndex]} style={{
+              // border:'solid 10px #fff',
+              // margin:10,
+              // margin:'0 auto',
+              width:'100vw',
+              // maxHeight:window.innerHeight
+              // height:window.innerHeight
+            
+            }}
+            onLoad={handleImageLoad}/>
             // <NextImage
             //   className={img}
             //   src={state.s3images[state.currentIndex]}
