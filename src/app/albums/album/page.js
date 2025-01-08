@@ -239,7 +239,6 @@ const {
   nextLayer,
   imgContainer,
   imageTitle,
-  navBtn,
   exitFullScreen
 } = styles;
 export default Page;
