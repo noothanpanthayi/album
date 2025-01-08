@@ -31,14 +31,13 @@ const Page = () => {
         id: "1004",
         title: "Colorado",
         date: "June 20, 2022",
-        coverImage:
-          `https://amzn-s3-nkalbum-bucket.s3.us-east-2.amazonaws.com/travel/travel/20220719_130713.jpg`
+        coverImage:`https://amzn-s3-nkalbum-bucket.s3.us-east-2.amazonaws.com/travel/travel/20220721_165946.jpg`
       },
       {
         id: "1005",
         title: "Washington",
         date: "June 20, 2022",
-        coverImage:`https://amzn-s3-nkalbum-bucket.s3.us-east-2.amazonaws.com/travel/travel/20220721_165946.jpg`,
+        coverImage:`https://amzn-s3-nkalbum-bucket.s3.us-east-2.amazonaws.com/travel/travel/texas.JPG`,                 
       },
       {
         id: "1006",
