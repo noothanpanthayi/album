@@ -2,7 +2,6 @@
 
 .imgContainer {
   position: relative;
-  margin-top: 37px;
 }
 
 .buttonPanel {
@@ -105,4 +104,12 @@
   position: absolute;
   border-radius: 50%;
   background-color: darkblue;
+}
+
+.CntnrMargin {
+  margin-top:37px;
+}
+
+.noCntnrMargin {
+  margin-top:0
 }

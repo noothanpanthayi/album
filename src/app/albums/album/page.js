@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import NextImage from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
-import {getHost} from '../../api/getHost';
+// import {getHost} from '../../api/getHost';
 
 
 function Page() {
@@ -19,12 +19,12 @@ function Page() {
 
   const fetchImages = async () => {
 
-    console.log("HOST URL ", `${getHost()}/api/list-images?folderName=travel`);
+    // console.log("HOST URL ", `${getHost()}/api/list-images?folderName=travel`);
     
     // const response = await fetch(`${getHost()}/api/list-images?folderName=nyalbum`);
 
-    const response = await fetch('http://3.80.91.134/api/list-images?folderName=travel');
-    // const response = await fetch('http://localhost:3000/api/list-images?folderName=travel');
+    // const response = await fetch('http://3.80.91.134/api/list-images?folderName=travel');
+    const response = await fetch('http://localhost:3000/api/list-images?folderName=travel');
     const data = await response.json();
 
     data.images.forEach(url=>{
@@ -168,7 +168,7 @@ function Page() {
         </div>
 }
 
-        <div className={imgContainer}>
+        <div className={`${imgContainer} ${state.isFullScreen?noCntnrMargin:CntnrMargin}`}>
           {state.showNav &&  
           state.imageLoaded && 
           (
@@ -239,7 +239,9 @@ const {
   nextLayer,
   imgContainer,
   imageTitle,
-  exitFullScreen
+  exitFullScreen,
+  CntnrMargin,
+  noCntnrMargin
 } = styles;
 export default Page;
 
