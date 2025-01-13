@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 // import styles from "./page.module.css";
 // import { svg } from "./svgs";
