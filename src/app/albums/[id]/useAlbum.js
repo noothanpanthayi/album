@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 // import styles from "./page.module.css";
 // import { svg } from "./svgs";
+import styles from './page.module.css';
 
 export const useAlbum = () => {
+
   const [state, setState] = useState({
     isFullScreen: false,
     showNav: false,
@@ -20,13 +22,46 @@ export const useAlbum = () => {
 
 const {id}=useParams();
 
+const Speed=()=>{
+
+  return <>
+  {/* {state.slideShowSpeed} */}
+  <div>
+    <select className={styles.speedCtr} value={state.slideShowSpeed} onChange={updateSpeed}>
+    <option value={null}>Speed</option>
+
+      <option value={1}>1</option>
+      <option value={2}>2</option>
+      <option value={3}>3</option>
+      <option value={4}>4</option>
+      <option value={5}>5</option>
+      <option value={6}>6</option>
+      <option value={7}>7</option>
+      <option value={8}>8</option>
+      <option value={9}>9</option>
+      <option value={10}>10</option>
+    </select>
+  </div>
+  </>
+}
+
+  const updateSpeed = (e) => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        slideShowSpeed:e.target.value ? parseInt(e.target.value): state.slideShowSpeed,
+      };
+    });
+  };
+
+
   const fetchImages = async () => {
-    const response = await fetch(
-      `http://3.80.91.134/api/list-images?folderName=${id}`
-    );
     // const response = await fetch(
-    //   `http://localhost:3000/api/list-images?folderName=${id}`
+    //   `http://3.80.91.134/api/list-images?folderName=${id}`
     // );
+    const response = await fetch(
+      `http://localhost:3000/api/list-images?folderName=${id}`
+    );
     const data = await response.json();
 
     data.images.forEach((url) => {
@@ -83,6 +118,10 @@ const {id}=useParams();
     };
   }, []);
 
+  useEffect(()=>{
+    console.log("State ", state)
+  })
+
   const handleKeyDown = (e) => {
     switch (e.key) {
       case "ArrowRight":
@@ -136,7 +175,7 @@ const {id}=useParams();
   const slideShowOn = () => {
     const intervalHandler = setInterval(() => {
       navigate("next");
-    }, 7000);
+    }, state.slideShowSpeed * 1000);
     setState((prevState) => {
       return {
         ...prevState,
@@ -176,15 +215,7 @@ const {id}=useParams();
     });
   };
 
-  const updateSpeed = (e) => {
-    setState((prevState) => {
-      return {
-        ...prevState,
-        slideShowSpeed: parseInt(e.target.value),
-      };
-    });
-  };
-
+  
   return {
     state,
     fetchImages,
@@ -198,5 +229,6 @@ const {id}=useParams();
     slideShowOff,
     toggleAuto,
     updateSpeed,
+    Speed
   };
 };

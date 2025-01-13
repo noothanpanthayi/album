@@ -4,6 +4,7 @@ import React from "react";
 import styles from "./page.module.css";
 import { svg } from "./svgs";
 import { useAlbum } from "./useAlbum";
+import { SP } from "next/dist/shared/lib/utils";
 
 function Page() {
   const {
@@ -13,11 +14,12 @@ function Page() {
     home,
     handleImageLoad,
     toggleAuto,
+    Speed
   } = useAlbum();
 
-  
 
- 
+
+
   return (
     <>
       <div>
@@ -42,7 +44,10 @@ function Page() {
             </div>
             <div>
               <div className={utils}>
-                {!state.slideShowActive && (
+                {!state.slideShowActive && <>
+                   <div style={{display:'flex', alignItems:'center'}}>
+                   <Speed/>
+                 </div>
                   <div
                     title="Start Slide Show"
                     onClick={toggleAuto}
@@ -50,12 +55,13 @@ function Page() {
                   >
                     {svg.play}
                   </div>
-                )}
+                </>}
                 {state.slideShowActive && (
-                  <div style={{ display: "flex" }}>
-                    {/* <div>
-                      <input onChange={updateSpeed} type="number" value={state.slideShowSpeed} min="0" max="10" />
-                    </div> */}
+                  <div style={{ display: "flex", gap:10 }}>
+                    <div className={currSpeed}>
+                      {state.slideShowSpeed}
+                    </div>
+                   
                     <div title="Stop Slide Show" onClick={toggleAuto}>
                       {svg.stop}
                     </div>
@@ -164,5 +170,6 @@ const {
   exitActive,
   exitNormal,
   imgActive,
+  currSpeed
 } = styles;
 export default Page;

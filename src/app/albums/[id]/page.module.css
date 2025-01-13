@@ -57,7 +57,7 @@
 .imageTitle{
   z-index: 2;
   display: flex;
-  position:fixed;
+  /* position:fixed; */
   justify-content: space-between;
   background-color:#484848;
   color:#fff;
@@ -146,4 +146,21 @@ border: solid 2px #fff;
 
 .noCntnrMargin {
   margin-top:0
+}
+
+.speedCtr {
+  border:solid 1px #fff;
+  padding:3;
+  width:auto;
+  /* font-weight: bold; */
+  /* font-size:16px; */
+  color:#000
+}
+
+.currSpeed {
+  font-size: 16px;
+  /* font-weight: bold; */
+  border:solid 1px #fff;
+  padding:3px 8px;
+  border-radius:6px
 }
