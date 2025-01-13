@@ -1,0 +1,38 @@
+
+import nodemailer from 'nodemailer';
+
+export default async function handler(req, res){
+    
+    if (req.method==='POST'){
+        const {email}=req.body;
+
+        let transporter=nodemailer.createTransport({
+            host:"smpt.email",
+            port:587,
+            secure:false,
+            auth:{
+                user:"your email",
+                pass:"your email"
+            }
+        })
+        try {
+            await transporter.sendMail({
+                from:"Your Name <email>",
+                to:email,
+                subject:"Login",
+                text:"you",
+                html:"you have"
+            });
+            res.status(200).json({message:"Email sent successfully"})
+        } catch(error){
+            console.log(error);
+            res.status(500).json({error:'Failed to send email'})
+        }
+    }
+    else {
+        res.status(405).json({message:"Method Not Allowed"})
+    }
+    }
+
+   
+

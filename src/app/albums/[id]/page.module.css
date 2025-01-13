@@ -2,6 +2,13 @@
 
 .imgContainer {
   position: relative;
+  display:flex;
+  justify-content: center;
+}
+
+.utils {
+  display:flex;
+  gap:10px
 }
 
 .buttonPanel {
@@ -27,6 +34,24 @@
 
 .img {
     position:static!important;
+    width:auto;
+    border: solid 3px red;
+   
+}
+
+.image {
+  display:flex;
+  alignItems:center;
+  justifyContent:center;
+  color:transparent;
+  margin:0px auto;
+  overflow:hidden;
+  opacity: 0;
+}
+
+.imgActive {
+  transition:opacity 0.5s ease-in-out;
+  opacity:1;
 }
 
 .imageTitle{
@@ -34,7 +59,7 @@
   display: flex;
   position:fixed;
   justify-content: space-between;
-  background-color:darkblue;
+  background-color:#484848;
   color:#fff;
   padding:5px;
   font-size: 14px;
@@ -95,15 +120,24 @@
 
 .exitFullScreen {
   cursor: pointer;
+  border: solid 2px #fff;
   font-size: 10px;
   margin: 5px;
-  border: solid 2px #fff;
   z-index: 2;
   right: 0;
   padding: 4px;
   position: absolute;
   border-radius: 50%;
-  background-color: darkblue;
+  background-color: transparent;
+}
+
+.exitActive{
+border: solid 2px #f00;
+
+}
+
+.exitNormal{
+border: solid 2px #fff;
 }
 
 .CntnrMargin {

@@ -93,3 +93,38 @@
   //   });
   //   return Promise.all(imagePromises);
   // };
+
+  // <img src={state.s3images[state.currentIndex]} 
+            // style={{
+            //   // border:'solid 10px #fff',
+            //   // margin:10,
+            //   // margin:'0 auto',
+            //   overflow:'auto',
+            //   // width:'100vw',
+            //   maxHeight:window.innerHeight,
+            //   // maxHeight:window.innerHeight
+            //   // maxHeight:window.innerHeight
+            //   // height:window.innerHeight
+            // }}
+            // onLoad={handleImageLoad}
+            // />
+
+             {/* <div  style={{
+                overflow:'auto',
+                width:'auto!important',
+                maxHeight:window.innerHeight,
+                position:'static'
+                }}> */}
+              {/* <NextImage
+              className={img}
+             
+              height={0}
+              width={0}
+              layout='responsive'
+              // fill
+              src={state.s3images[state.currentIndex]}
+              unoptimized={true}
+              onLoad={handleImageLoad}
+              alt="NY Pics"
+            /> */}
+              {/* </div> */}
