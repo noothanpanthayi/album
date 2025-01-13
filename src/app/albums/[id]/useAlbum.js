@@ -21,10 +21,12 @@ export const useAlbum = () => {
 const {id}=useParams();
 
   const fetchImages = async () => {
-    // const response = await fetch('http://3.80.91.134/api/list-images?folderName=travel');
     const response = await fetch(
-      `http://localhost:3000/api/list-images?folderName=${id}`
+      `http://3.80.91.134/api/list-images?folderName=${id}`
     );
+    // const response = await fetch(
+    //   `http://localhost:3000/api/list-images?folderName=${id}`
+    // );
     const data = await response.json();
 
     data.images.forEach((url) => {
