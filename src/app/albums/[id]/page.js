@@ -4,7 +4,6 @@ import React from "react";
 import styles from "./page.module.css";
 import { svg } from "./svgs";
 import { useAlbum } from "./useAlbum";
-import { SP } from "next/dist/shared/lib/utils";
 
 function Page() {
   const {
