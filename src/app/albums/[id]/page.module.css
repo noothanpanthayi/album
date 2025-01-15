@@ -5,7 +5,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .utils {
@@ -37,8 +36,11 @@
 .img {
     position:static!important;
     width:auto;
-    border: solid 3px red;
-   
+    border: solid 3px red;  
+}
+
+.fullScreen {
+  height: 100vh;
 }
 
 .image {
@@ -143,7 +145,7 @@ border: solid 2px #fff;
 }
 
 .CntnrMargin {
-  margin-top:37px;
+  /* margin-top:37px; */
 }
 
 .noCntnrMargin {
