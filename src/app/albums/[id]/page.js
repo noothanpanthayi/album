@@ -102,7 +102,7 @@ function Page() {
 
         <div
           className={`${imgContainer} ${
-            state.isFullScreen ? noCntnrMargin : CntnrMargin
+            state.isFullScreen ? fullScreen : ''
           }`}
         >
           {state.showNav && state.imageLoaded && (
@@ -162,13 +162,12 @@ const {
   imgContainer,
   imageTitle,
   exitFullScreen,
-  CntnrMargin,
-  noCntnrMargin,
   image,
   utils,
   exitActive,
   exitNormal,
   imgActive,
-  currSpeed
+  currSpeed,
+  fullScreen
 } = styles;
 export default Page;
