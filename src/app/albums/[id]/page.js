@@ -2,7 +2,7 @@
 import React from "react";
 // import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
-import { svg } from "./svgs";
+import { svg, svg2 } from "./svgs";
 import { useAlbum } from "./useAlbum";
 
 function Page() {
@@ -40,12 +40,21 @@ function Page() {
             </div>
             <div>
               <div className={utils} style={{ display: "flex", alignItems: "center" }}>
-                <div 
-                title={`${state.musicOn?"Turn Music Off":"Turn Music On"}`}
-                onClick={togglePlayAudio} className={`${music} ${state.musicOn?red:''}`}>
-                  🎜
-                </div>
                 
+                {
+                  !state.musicOn && <div 
+                      title="Turn Music On"
+                      onClick={togglePlayAudio} className={`${music} red`}>
+                      ♫
+                  </div>
+                }
+
+                {state.musicOn && <div 
+                title="Turn Music Off"
+                onClick={togglePlayAudio} className={`${music}`}>
+                 {svg2('red').musicOff}
+                </div>
+}
                 {!state.slideShowActive && (
                   <>
                     <div style={{ display: "flex", alignItems: "center" }}>
@@ -179,7 +188,6 @@ const {
   imgActive,
   currSpeed,
   fullScreen,
-  music,
-  red
+  music
 } = styles;
 export default Page;

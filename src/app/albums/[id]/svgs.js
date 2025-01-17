@@ -1,3 +1,19 @@
+export const svg2 = (color) => {
+  return {
+    musicOff: (
+      <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 -960 960 960"
+      width="24px"
+      fill={color}
+    >
+      <path d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" />
+    </svg>
+    ),
+  };
+};
+
 export const svg = {
   home: (
     <svg
@@ -63,6 +79,28 @@ export const svg = {
       fill="#fff"
     >
       <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+    </svg>
+  ),
+  musicOn: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 -960 960 960"
+      width="24px"
+      fill="#fff"
+    >
+      <path d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" />
+    </svg>
+  ),
+  musicOff: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 -960 960 960"
+      width="24px"
+      fill="#fff"
+    >
+      <path d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" />
     </svg>
   ),
 };
