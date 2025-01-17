@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
 // import styles from "./page.module.css";
 // import { svg } from "./svgs";
@@ -18,6 +18,7 @@ export const useAlbum = () => {
     slideShowActive: false,
     intervalHandler: null,
     imageLoaded: false,
+    musicOn:false
   });
 
 const {id}=useParams();
@@ -215,6 +216,30 @@ const Speed=()=>{
     });
   };
 
+  const audioRef = useRef(null);
+
+  const togglePlayAudio = () => {
+    let musicStatus;
+    if (audioRef.current) {
+      if (state.musicOn){
+        musicStatus=false;
+        audioRef.current.pause();
+      }
+      else {
+        musicStatus=true
+        audioRef.current.play();
+      }
+      
+    }
+    setState((prevState) => {
+      return {
+        ...prevState,
+        musicOn:musicStatus,
+      };
+    });
+  };
+
+
   
   return {
     state,
@@ -229,6 +254,8 @@ const Speed=()=>{
     slideShowOff,
     toggleAuto,
     updateSpeed,
-    Speed
+    Speed,
+    togglePlayAudio,
+    audioRef,
   };
 };

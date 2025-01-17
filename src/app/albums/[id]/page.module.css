@@ -1,5 +1,3 @@
-
-
 .imgContainer {
   position: relative;
   display: flex;
@@ -69,6 +67,7 @@
   padding:5px;
   font-size: 14px;
   width:-webkit-fill-available;
+  height:45px;
   align-items: center;
   cursor: pointer;
   top:0
@@ -168,4 +167,13 @@ border: solid 2px #fff;
   border:solid 1px #fff;
   padding:3px 8px;
   border-radius:6px
+}
+
+.music {
+  font-size:30px;
+  cursor: pointer;
+}
+
+.red {
+  color:red
 }

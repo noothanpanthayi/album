@@ -13,12 +13,12 @@ function Page() {
     home,
     handleImageLoad,
     toggleAuto,
-    Speed
+    Speed,
+    togglePlayAudio,
+    audioRef
   } = useAlbum();
 
-
-
-
+  
   return (
     <>
       <div>
@@ -29,38 +29,41 @@ function Page() {
             </div>
 
             <div onClick={home} style={{ textTransform: "capitalize" }}>
-              {
-                
-                decodeURI(state.s3images[state.currentIndex]
+              {decodeURI(
+                state.s3images[state.currentIndex]
                   ?.split("/")[4]
                   .split("?")[0]
                   .split("_")
                   .join(" ")
                   .split(".")[0]
-                )
-
-              }
+              )}
             </div>
             <div>
-              <div className={utils}>
-                {!state.slideShowActive && <>
-                   <div style={{display:'flex', alignItems:'center'}}>
-                   <Speed/>
-                 </div>
-                  <div
-                    title="Start Slide Show"
-                    onClick={toggleAuto}
-                    style={{ cursor: "pointer", color: "#fff" }}
-                  >
-                    {svg.play}
-                  </div>
-                </>}
-                {state.slideShowActive && (
-                  <div style={{ display: "flex", gap:10 }}>
-                    <div className={currSpeed}>
-                      {state.slideShowSpeed}
+              <div className={utils} style={{ display: "flex", alignItems: "center" }}>
+                <div 
+                title={`${state.musicOn?"Turn Music Off":"Turn Music On"}`}
+                onClick={togglePlayAudio} className={`${music} ${state.musicOn?red:''}`}>
+                  🎜
+                </div>
+                
+                {!state.slideShowActive && (
+                  <>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <Speed />
                     </div>
-                   
+                    <div
+                      title="Start Slide Show"
+                      onClick={toggleAuto}
+                      style={{ cursor: "pointer", color: "#fff" }}
+                    >
+                      {svg.play}
+                    </div>
+                  </>
+                )}
+                {state.slideShowActive && (
+                  <div style={{ display: "flex", gap: 10 }}>
+                    <div className={currSpeed}>{state.slideShowSpeed}</div>
+
                     <div title="Stop Slide Show" onClick={toggleAuto}>
                       {svg.stop}
                     </div>
@@ -101,9 +104,7 @@ function Page() {
         )}
 
         <div
-          className={`${imgContainer} ${
-            state.isFullScreen ? fullScreen : ''
-          }`}
+          className={`${imgContainer} ${state.isFullScreen ? fullScreen : ""}`}
         >
           {state.showNav && state.imageLoaded && (
             <div
@@ -152,6 +153,15 @@ function Page() {
           )}
         </div>
       </div>
+      <div>
+        <audio ref={audioRef}>
+          {/* <source src="/assets/music/abbapiano.mp3" type="audio/mpeg" /> */}
+          <source src="https://jking.cdnstream1.com/b22139_128mp3" type="audio/mpeg" />
+          {/* <source src="http://radio.streemlion.com:2310/stream" type="audio/mpeg" /> */}
+
+          {/* http://radio.streemlion.com:2310/stream */}
+        </audio>
+      </div>
     </>
   );
 }
@@ -168,6 +178,8 @@ const {
   exitNormal,
   imgActive,
   currSpeed,
-  fullScreen
+  fullScreen,
+  music,
+  red
 } = styles;
 export default Page;
