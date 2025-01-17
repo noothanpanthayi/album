@@ -12,12 +12,12 @@ const Page = () => {
         title: "New York",
         date: "June 20, 2022",
         coverImage:
-          "https://amzn-s3-nkalbum-bucket.s3.us-east-2.amazonaws.com/nyalbum/ny2.jpg",
+          "https://amzn-s3-nkalbum-bucket.s3.us-east-2.amazonaws.com/nyalbum/New+York/ny2.jpg",
       },
       {
         id: "1002",
-        qs:"travel",
-        title: "Atlanta",
+        qs:"washington",
+        title: "Washington",
         date: "June 20, 2022",
         coverImage:
           "https://amzn-s3-nkalbum-bucket.s3.us-east-2.amazonaws.com/travel/travel/20220528_125943.jpg",
