@@ -18,7 +18,12 @@ export const useAlbum = () => {
     slideShowActive: false,
     intervalHandler: null,
     imageLoaded: false,
-    musicOn:false
+    musicOn:false,
+    windowDIM:{
+      width:window.innerWidth,
+      height:window.innerHeight
+    }
+    
   });
 
 const {id}=useParams();
@@ -108,14 +113,30 @@ const Speed=()=>{
     }
   };
 
+  const handleResize=()=>{
+    setState((prevState) => {
+      return {
+        ...prevState,
+        windowDIM: {
+          width:window.innerWidth,
+          height:window.innerHeight
+        }
+      };
+    });
+  }
+
   useEffect(() => {
     document.addEventListener("fullscreenchange", handleEscapeKey);
     document.addEventListener("keydown", handleKeyDown);
+
+    window.addEventListener('resize', handleResize)
     fetchImages();
+
     return () => {
       if (state.intervalHandler) {
         clearInterval(state.intervalHandler);
       }
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 

@@ -143,8 +143,8 @@ function Page() {
                   decoding="async"
                   className={state.imageLoaded ? imgActive : image}
                   style={{
-                    maxWidth: window.innerWidth,
-                    maxHeight: window.innerHeight,
+                    maxWidth: state.windowDIM.width,
+                    maxHeight: state.windowDIM.height,
                   }}
                   onLoad={handleImageLoad}
                 />
