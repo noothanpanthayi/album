@@ -104,8 +104,10 @@ function Page() {
         )}
 
         <div
-          className={`${imgContainer} ${state.isFullScreen ? fullScreen : ""}`}
+          className={`${state.isFullScreen ? fullScreen : ""}`}
         >
+
+          <div className={navContainer}>
           {state.showNav && state.imageLoaded && (
             <div
               title="Click to Navigate Back"
@@ -116,6 +118,8 @@ function Page() {
             </div>
           )}
 
+          <div onClick={toggleFullScreen} className={navMiddle}>&nbsp;</div>
+
           {state.showNav && state.imageLoaded && (
             <div
               title="Click to Navigate Forward"
@@ -125,7 +129,7 @@ function Page() {
               {svg.navNext}
             </div>
           )}
-
+</div>
           {state.s3images?.length > 0 && (
             <>
               <div
@@ -169,7 +173,6 @@ function Page() {
 const {
   backLayer,
   nextLayer,
-  imgContainer,
   imageTitle,
   exitFullScreen,
   image,
@@ -180,6 +183,8 @@ const {
   currSpeed,
   fullScreen,
   music,
-  red
+  red,
+  navContainer,
+  navMiddle
 } = styles;
 export default Page;

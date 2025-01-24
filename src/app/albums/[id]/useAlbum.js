@@ -2,10 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
 // import styles from "./page.module.css";
 // import { svg } from "./svgs";
-import styles from './page.module.css';
+import styles from "./page.module.css";
 
 export const useAlbum = () => {
-
   const [state, setState] = useState({
     isFullScreen: false,
     showNav: false,
@@ -18,53 +17,59 @@ export const useAlbum = () => {
     slideShowActive: false,
     intervalHandler: null,
     imageLoaded: false,
-    musicOn:false,
-    windowDIM:{
-      width:window.innerWidth,
-      height:window.innerHeight
-    }
-    
+    musicOn: false,
+    windowDIM: {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    },
   });
 
-const {id}=useParams();
+  const { id } = useParams();
 
-const Speed=()=>{
+  const Speed = () => {
+    return (
+      <>
+        {/* {state.slideShowSpeed} */}
+        <div>
+          <select
+            className={styles.speedCtr}
+            value={state.slideShowSpeed}
+            onChange={updateSpeed}
+          >
+            <option value={null}>Speed</option>
 
-  return <>
-  {/* {state.slideShowSpeed} */}
-  <div>
-    <select className={styles.speedCtr} value={state.slideShowSpeed} onChange={updateSpeed}>
-    <option value={null}>Speed</option>
-
-      <option value={1}>1</option>
-      <option value={2}>2</option>
-      <option value={3}>3</option>
-      <option value={4}>4</option>
-      <option value={5}>5</option>
-      <option value={6}>6</option>
-      <option value={7}>7</option>
-      <option value={8}>8</option>
-      <option value={9}>9</option>
-      <option value={10}>10</option>
-    </select>
-  </div>
-  </>
-}
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+            <option value={6}>6</option>
+            <option value={7}>7</option>
+            <option value={8}>8</option>
+            <option value={9}>9</option>
+            <option value={10}>10</option>
+          </select>
+        </div>
+      </>
+    );
+  };
 
   const updateSpeed = (e) => {
     setState((prevState) => {
       return {
         ...prevState,
-        slideShowSpeed:e.target.value ? parseInt(e.target.value): state.slideShowSpeed,
+        slideShowSpeed: e.target.value
+          ? parseInt(e.target.value)
+          : state.slideShowSpeed,
       };
     });
   };
-
 
   const fetchImages = async () => {
     const response = await fetch(
       `http://3.80.91.134/api/list-images?folderName=${id}`
     );
+
     // const response = await fetch(
     //   `http://localhost:3000/api/list-images?folderName=${id}`
     // );
@@ -113,47 +118,62 @@ const Speed=()=>{
     }
   };
 
-  const handleResize=()=>{
+  const handleResize = () => {
     setState((prevState) => {
       return {
         ...prevState,
         windowDIM: {
-          width:window.innerWidth,
-          height:window.innerHeight
-        }
+          width: window.innerWidth,
+          height: window.innerHeight,
+        },
       };
     });
-  }
+  };
 
   useEffect(() => {
     document.addEventListener("fullscreenchange", handleEscapeKey);
     document.addEventListener("keydown", handleKeyDown);
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize);
     fetchImages();
 
     return () => {
       if (state.intervalHandler) {
         clearInterval(state.intervalHandler);
       }
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
-  useEffect(()=>{
-    console.log("State ", state)
-  })
+  // useEffect(()=>{
+  //   console.log("State ", state)
+  // })
 
   const handleKeyDown = (e) => {
     switch (e.key) {
       case "ArrowRight":
         navigate("next");
         break;
+      case "ArrowUp":
+        // alert("arrow up" + state.isFullScreen)
+
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        }
+        break;
       case "ArrowLeft":
         navigate("back");
         break;
+      case "ArrowDown":
+        //  alert("arrow down" + state.isFullScreen)
+
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+        break;
       case " ":
-        navigate("next  ");
+        navigate("next");
     }
   };
 
@@ -180,7 +200,7 @@ const Speed=()=>{
     });
   };
 
-  const router=useRouter();
+  const router = useRouter();
   const home = () => {
     router.push("/albums");
   };
@@ -242,26 +262,22 @@ const Speed=()=>{
   const togglePlayAudio = () => {
     let musicStatus;
     if (audioRef.current) {
-      if (state.musicOn){
-        musicStatus=false;
+      if (state.musicOn) {
+        musicStatus = false;
         audioRef.current.pause();
-      }
-      else {
-        musicStatus=true
+      } else {
+        musicStatus = true;
         audioRef.current.play();
       }
-      
     }
     setState((prevState) => {
       return {
         ...prevState,
-        musicOn:musicStatus,
+        musicOn: musicStatus,
       };
     });
   };
 
-
-  
   return {
     state,
     fetchImages,
